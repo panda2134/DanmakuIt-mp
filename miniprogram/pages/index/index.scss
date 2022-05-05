@@ -1,0 +1,48 @@
+/**index.wxss**/
+.room-id {
+  position: fixed;
+  top: 32rpx;
+  left: 32rpx;
+  color: #333;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.danmaku {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  box-shadow: #ccc 0 -2px 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  &.is-iphone-x {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  box-sizing: border-box;
+  input {
+    flex-grow: 1;
+  }
+  input:focus {
+    border-bottom: 1px solid #ccc;
+  }
+  button {
+    color: white;
+    background-color: #1cb84d;
+  }
+}

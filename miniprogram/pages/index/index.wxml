@@ -1,0 +1,41 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="room-id">
+    <text bindtap="promptSetRoomId">房间号：{{roomId || '未设置'}}</text>
+  </view>
+  <view class="userinfo">
+    <block wx:if="{{!roomId}}">
+      <button bindtap="promptSetRoomId"> 设置房间号 </button>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button bindtap="getUserProfile"> 上传头像昵称 </button>
+    </block>
+    <block wx:else>
+      <image
+        src="{{avatarUrl}}"
+        class="userinfo-avatar"
+        bindtap="getUserProfile"
+      ></image>
+      <text bindtap="getUserProfile">{{nickName}}</text>
+    </block>
+  </view>
+  <view class="{{iPhoneXPlus ? 'danmaku is-iphone-x' : 'danmaku'}}">
+    <input
+      placeholder="{{roomId ? '叽叽喳喳' : '请先设置房间号'}}" 
+      confirm-type="send"
+      disabled="{{!roomId}}"
+      value="{{currentDanmaku}}"
+      always-embed="{{true}}"
+      cursor-spacing="16"
+      bindinput="handleInput"
+      bindconfirm="sendDanmaku"
+    />
+    <button
+      size="mini"
+      disabled="{{!roomId || !currentDanmaku}}"
+      bindtap="sendDanmaku"
+    >
+      发送
+    </button>
+  </view>
+</view>
